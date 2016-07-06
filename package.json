@@ -1,0 +1,34 @@
+{
+  "name": "dictionary",
+  "version": "0.0.1",
+  "description": "My personal dictionary for JavaScript",
+  "private": true,
+  "main": "index.js",
+  "homepage": "https://github.com/cognitom/dictionary",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cognitom/dictionary.git"
+  },
+  "author": "Tsutomu Kawamura",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cognitom/dictionary/issues"
+  },
+  "dependencies": {
+    "express": "^4.14.0",
+    "express-middleware-rollup": "cognitom/express-middleware-rollup#polyfill-mode",
+    "rollup-plugin-buble": "^0.12.1",
+    "rollup-plugin-commonjs": "^3.1.0",
+    "rollup-plugin-node-resolve": "^1.7.1"
+  },
+  "devDependencies": {
+    "ava": "^0.15.2",
+    "eslint": "^3.0.1",
+    "nightmare": "^2.5.2"
+  },
+  "scripts": {
+    "test": "npm run eslint && npm run ava",
+    "eslint": "eslint words/*/index.js",
+    "ava": "ava words/fecha/spec.js"
+  }
+}
