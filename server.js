@@ -1,25 +1,19 @@
+'use strict'
 const
   express = require('express'),
-  rollup = require('express-middleware-rollup'),
-  nodeResolve = require('rollup-plugin-node-resolve'),
-  commonjs = require('rollup-plugin-commonjs'),
-  buble = require('rollup-plugin-buble'),
-  path = require('path')
+  path = require('path'),
+  felt = require('felt'),
+  recipe = require('felt-recipe-minimal')
 
 const
   app = express(),
   templates = path.join(__dirname, 'templates')
 
-app.use(rollup({
-  mode: 'polyfill',
+app.use(felt(recipe, {
   src: 'words',
-  rollupOpts: {
-    plugins: [
-      nodeResolve({ jsnext: true, main: true, browser: true }),
-      commonjs(),
-      buble()
-    ]
-  }
+  patterns: ['*/index.js', '**/*.css'],
+  watch: true,
+  debug: true
 }))
 app.use(express.static('words'))
 app.get('*/', (req, res) => res.sendFile(`${ templates }/index.html`))
