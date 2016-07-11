@@ -6,6 +6,17 @@
   </head>
 
   <body>
+    <script>
+    (function () {
+      var log = console.log
+      console.history = []
+      console.log = function () {
+        var args = Array.prototype.slice.call(arguments)
+        console.history.push(args.join(';'))
+        log.apply(this, args)
+      }
+    }())
+    </script>
     <script src="index.js"></script>
   </body>
 
